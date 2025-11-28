@@ -1,6 +1,4 @@
 // Function Name : Modal Cancel Booking
-// Created date :  22/8/24             by :  VinhLQ
-// Updated date :  22/8/24             by :  VinhLQ
 import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";

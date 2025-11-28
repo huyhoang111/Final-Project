@@ -1,6 +1,4 @@
 // Function Name : Staff Service
-// Created date :  31/7/24             by :  NgVinh
-// Updated date :                      by :  NgVinh
 
 import ApiClientWithToken, { formDataClientWithToken } from "../api";
 import { getParamsHelp } from "../hook/useApp";

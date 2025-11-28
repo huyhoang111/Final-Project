@@ -1,6 +1,4 @@
 // Function Name : Breadcrumb
-// Created date :  20/7/24             by :  NgVinh
-// Updated date :  20/7/24             by :  NgVinh
 
 import React from "react";
 import PropTypes from "prop-types";

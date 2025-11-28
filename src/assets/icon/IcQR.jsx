@@ -1,6 +1,4 @@
 // Function Name : Icon
-// Created date :  02/10/24             by :  VinhLQ
-// Updated date :                      by :  VinhLQ
 
 const IcQR = ({ color = "#DFD4FF" }) => {
   return (

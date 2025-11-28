@@ -1,6 +1,4 @@
 // Function Name : Header
-// Created date :  19/7/24             by :  NgVinh
-// Updated date :  20/7/24             by :  NgVinh
 
 import PropTypes from "prop-types";
 import React, { useState } from "react";

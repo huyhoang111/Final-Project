@@ -1,6 +1,4 @@
-// Function Name : Modal Schedule Detail
-// Created date :  19/03/25             by :  VinhLQ
-// Updated date :  19/03/25             by :  VinhLQ
+// Function Name : Modal Purchase History Status
 import { useFormik } from "formik";
 import React, { useEffect, useMemo, useState } from "react";
 import * as Yup from "yup";

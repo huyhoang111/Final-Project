@@ -1,6 +1,4 @@
 // Function Name : Staff Profile
-// Created date :  31/7/24             by :  NgVinh
-// Updated date :                      by :  NgVinh
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import PropTypes from "prop-types";

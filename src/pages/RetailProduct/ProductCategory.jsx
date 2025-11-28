@@ -1,6 +1,4 @@
 // Function Name : Product Category List
-// Created date :  12/8/24             by :  NgVinh
-// Updated date :                      by :  NgVinh
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Badge, Button, Col, Collapse, Input, Row, Table } from "reactstrap";
 import InputSearch from "../../components/Common/InputSearch";

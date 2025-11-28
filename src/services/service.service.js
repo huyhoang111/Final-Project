@@ -1,6 +1,5 @@
 // Function Name : Service Service
-// Created date :  28/7/24             by :  NgVinh
-// Updated date :  1/8/24              by :  NgVinh
+
 
 import ApiClientWithToken from "../api";
 import { getParamsHelp } from "../hook/useApp";

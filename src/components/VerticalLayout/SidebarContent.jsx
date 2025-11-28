@@ -1,6 +1,4 @@
 // Function Name : Sidebar Content
-// Created date :  19/7/24             by :  NgVinh
-// Updated date :  1/8/24              by :  NgVinh
 
 import PropTypes from "prop-types";
 import React, { useEffect, useMemo, useRef } from "react";

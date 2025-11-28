@@ -1,6 +1,4 @@
 // Function Name : Modal Component
-// Created date :  25/7/24             by :  NgVinh
-// Updated date :                      by :
 import React from "react";
 import { Modal, ModalHeader } from "reactstrap";
 

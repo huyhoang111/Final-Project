@@ -1,6 +1,4 @@
 // Function Name : Package Page
-// Created date :  1/8/24             by :  NgVinh
-// Updated date :                     by :  NgVinh
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import PropTypes from "prop-types";

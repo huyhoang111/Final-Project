@@ -1,6 +1,4 @@
-// Function Name : Product Category List
-// Created date :  12/8/24             by :  NgVinh
-// Updated date :                      by :  NgVinh
+// Function Name : Package Tab Customer
 import React, { useEffect, useRef, useState } from "react";
 import { Badge, Col, Collapse, Row, Table } from "reactstrap";
 import InputSearch from "../../components/Common/InputSearch";

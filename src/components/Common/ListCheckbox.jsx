@@ -1,6 +1,4 @@
-// Function Name : App Service
-// Created date :  8/8/24             by :  NgVinh
-// Updated date :                     by :  NgVinh
+// Function Name : List Checkbox Component
 
 import React from "react";
 import { Input } from "reactstrap";

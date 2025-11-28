@@ -1,6 +1,4 @@
 // Function Name : Location Detail
-// Created date :  22/7/24             by :  NgVinh
-// Updated date :                      by :
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import PropTypes from "prop-types";

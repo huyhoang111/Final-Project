@@ -1,6 +1,4 @@
 // Function Name : Language Config
-// Created date :  22/7/24             by :  NgVinh
-// Updated date :                      by :
 
 import i18n from "i18next";
 import detector from "i18next-browser-languagedetector";

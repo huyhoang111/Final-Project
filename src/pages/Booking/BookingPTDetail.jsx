@@ -1,6 +1,4 @@
 // Function Name : Booking Detail
-// Created date :  6/8/24             by :  VinhLQ
-// Updated date :                     by :  VinhLQ
 
 import React, { useEffect, useMemo, useState } from "react";
 import PropTypes from "prop-types";

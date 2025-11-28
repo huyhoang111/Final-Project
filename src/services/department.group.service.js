@@ -1,6 +1,5 @@
 // Function Name : Market segment Service
-// Created date :  /25             by :  Antoine REY
-// Updated date :                      by :  Antoine REY
+
 
 import ApiClientWithToken, { formDataClientWithToken } from "../api";
 import { getParamsHelp } from "../hook/useApp";

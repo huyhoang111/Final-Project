@@ -1,6 +1,4 @@
 // Function Name : Register Page
-// Created date :  11/11/24             by :  VinhLQ
-// Updated date :  11/11/24             by :  VinhLQ
 
 import React, { useEffect, useMemo } from "react";
 import PropTypes from "prop-types";

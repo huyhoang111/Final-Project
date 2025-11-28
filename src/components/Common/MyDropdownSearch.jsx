@@ -1,6 +1,4 @@
 // Function Name : Dropdown Component
-// Created date :  24/7/24             by :  VinhLQ
-// Updated date :                      by :  VinhLQ
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import styled from "styled-components";

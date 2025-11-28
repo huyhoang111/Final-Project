@@ -1,6 +1,4 @@
 // Function Name : Input Search Component
-// Created date :  25/7/24             by :  NgVinh
-// Updated date :                      by :  NgVinh
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import IcSearch from "../../assets/icon/IcSearch";

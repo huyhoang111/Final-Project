@@ -1,6 +1,4 @@
 // Function Name : Operator store
-// Created date :  21/7/24           by :  NgVinh
-// Updated date :                    by :  NgVinh
 
 import moment from "moment";
 import operatorService from "../services/operator.service";

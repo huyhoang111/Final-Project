@@ -1,6 +1,4 @@
 // Function Name : App Constants
-// Created date :  28/7/24              by :  NgVinh
-// Updated date :  1/8/24               by :  NgVinh
 
 import i18n from "../i18n";
 

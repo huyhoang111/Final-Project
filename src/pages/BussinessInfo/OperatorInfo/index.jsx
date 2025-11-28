@@ -1,6 +1,4 @@
-// Function Name : Operator Page
-// Created date :  19/7/24             by :  NgVinh
-// Updated date :  20/7/24             by :  NgVinh
+// Function Name : Operator Info
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import PropTypes from "prop-types";

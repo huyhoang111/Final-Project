@@ -1,6 +1,4 @@
 // Function Name : Pagination
-// Created date :  25/7/24             by :  NgVinh
-// Updated date :
 import { range } from "lodash";
 import React, { useMemo } from "react";
 import { Label, Pagination, PaginationItem, PaginationLink } from "reactstrap";

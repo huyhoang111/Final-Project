@@ -1,6 +1,4 @@
 // Function Name : hook useApp
-// Created date :  24/7/24             by :  NgVinh
-// Updated date :                      by :  NgVinh
 
 export const getParamsHelp = (params) => {
   const urlParams = [];

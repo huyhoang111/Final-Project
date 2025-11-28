@@ -1,6 +1,4 @@
 // Function Name : Routes
-// Created date :  19/7/24             by :  NgVinh
-// Updated date :  1/8/24              by :  NgVinh
 
 import React from "react";
 import { Navigate } from "react-router-dom";

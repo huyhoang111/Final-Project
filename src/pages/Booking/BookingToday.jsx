@@ -1,6 +1,4 @@
 // Function Name : Booking today
-// Created date :  22/8/24            by :  VinhLQ
-// Updated date :                     by :  VinhLQ
 
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";

@@ -1,6 +1,4 @@
 // Function Name : Icon
-// Created date :  31/7/24             by :  NgVinh
-// Updated date :                      by :  NgVinh
 
 const IcPlusCircle = () => {
   return (

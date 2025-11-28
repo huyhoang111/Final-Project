@@ -1,6 +1,4 @@
 // Function Name : Dashboard Service
-// Created date :  25/2/25             by :  NgVinh
-// Updated date :                      by :  NgVinh
 
 import ApiClientWithToken from "../api";
 import { getParamsHelp } from "../hook/useApp";

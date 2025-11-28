@@ -1,6 +1,4 @@
-// Function Name : Location Page
-// Created date :  22/7/24             by :  NgVinh
-// Updated date :  1/8/24              by :  NgVinh
+// Function Name : Location List
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import PropTypes from "prop-types";

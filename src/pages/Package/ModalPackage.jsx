@@ -1,6 +1,4 @@
 // Function Name : Modal Package
-// Created date :  1/8/24             by :  NgVinh
-// Updated date :                     by :  NgVinh
 import { useFormik } from "formik";
 import { useEffect, useMemo, useState } from "react";
 import * as Yup from "yup";

@@ -1,6 +1,5 @@
 // Function Name : Service Page
-// Created date :  28/7/24             by :  NgVinh
-// Updated date :  1/8/24              by :  NgVinh
+
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import PropTypes from "prop-types";

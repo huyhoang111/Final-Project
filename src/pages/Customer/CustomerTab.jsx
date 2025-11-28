@@ -1,6 +1,4 @@
 // Function Name : Customer Tab
-// Created date :  30/8/24             by :  NgVinh
-// Updated date :                     by :  NgVinh
 
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";

@@ -1,6 +1,4 @@
 // Function Name : auth util
-// Created date :  19/7/24             by :  NgVinh
-// Updated date :  21/7/24             by :  NgVinh
 
 import Cookies from "js-cookie";
 import authService from "../services/auth.service";

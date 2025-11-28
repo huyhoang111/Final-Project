@@ -1,6 +1,5 @@
 // Function Name : Modal Service
-// Created date :  25/7/24             by :  NgVinh
-// Updated date :  29/7/24             by :  NgVinh
+
 import { useFormik } from "formik";
 import React, { useEffect, useMemo, useState } from "react";
 import * as Yup from "yup";

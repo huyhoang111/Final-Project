@@ -1,6 +1,4 @@
 // Function Name : App
-// Created date :  19/7/24             by :  NgVinh
-// Updated date :  22/7/24             by :  NgVinh
 import Cookies from "js-cookie";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";

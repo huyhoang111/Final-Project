@@ -1,6 +1,5 @@
 // Function Name : Customer Service
-// Created date :  30/7/24             by :  NgVinh
-// Updated date :                      by :  NgVinh
+
 
 import ApiClientWithToken, { formDataClientWithToken, fileDataClientWithToken } from "../api";
 import { getParamsHelp } from "../hook/useApp";

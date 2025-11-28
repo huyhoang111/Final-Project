@@ -1,6 +1,4 @@
 // Function Name : Icon
-// Created date :  24/7/24             by :  NgVinh
-// Updated date :                      by :  NgVinh
 
 const IcLocker = () => {
   return (

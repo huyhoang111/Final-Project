@@ -1,6 +1,4 @@
 // Function Name : List Schedule Class
-// Created date :  3/8/24             by :  NgVinh
-// Updated date :  6/8/24             by :  NgVinh
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Badge, Button, Col, Collapse, Input, Row, Table } from "reactstrap";

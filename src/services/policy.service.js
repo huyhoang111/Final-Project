@@ -1,6 +1,5 @@
 // Function Name : Policy Service
-// Created date :  06/08/25            by :  Quentin POINTEAU
-// Updated date :                      by :  Quentin POINTEAU
+
 
 import ApiClientWithToken, { formDataClientWithToken } from "../api";
 import { getParamsHelp } from "../hook/useApp";

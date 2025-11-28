@@ -1,6 +1,4 @@
 // Function Name : Modal Option
-// Created date :  6/8/24             by :  NgVinh
-// Updated date :                     by :  NgVinh
 import { useFormik } from "formik";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import * as Yup from "yup";

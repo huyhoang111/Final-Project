@@ -1,6 +1,4 @@
 // Function Name : Class Detail
-// Created date :  2/8/24             by :  NgVinh
-// Updated date :                     by :  NgVinh
 
 import React, { useMemo, useState } from "react";
 import PropTypes from "prop-types";

@@ -1,6 +1,4 @@
 // Function Name : Icon
-// Created date :  19/7/24             by :  NgVinh
-// Updated date :  20/7/24             by :  NgVinh
 
 const IcDot = ({ color = "#FF0000" }) => {
   return (

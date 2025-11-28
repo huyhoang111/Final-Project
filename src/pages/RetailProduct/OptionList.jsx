@@ -1,6 +1,4 @@
 // Function Name : Option List
-// Created date :  7/8/24             by :  NgVinh
-// Updated date :                      by :  NgVinh
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import ModalOption from "./ModalOption";
 import optionService from "../../services/option.service";

@@ -1,6 +1,4 @@
 // Function Name : Modal Schedule Detail
-// Created date :  3/8/24             by :  NgVinh
-// Updated date :  4/8/24             by :  NgVinh
 import { useFormik } from "formik";
 import React, { useEffect, useMemo, useState } from "react";
 import * as Yup from "yup";

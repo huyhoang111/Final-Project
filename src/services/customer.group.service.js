@@ -1,6 +1,5 @@
 // Function Name : Customer group Service
-// Created date :  08/21               by :  Antoine REY
-// Updated date :                      by :  Antoine REY
+
 
 import ApiClientWithToken, { formDataClientWithToken } from "../api";
 import { getParamsHelp } from "../hook/useApp";

@@ -1,6 +1,4 @@
 // Function Name : Dropdown Component
-// Created date :  24/7/24             by :  NgVinh
-// Updated date :                      by :  NgVinh
 
 import React from "react";
 

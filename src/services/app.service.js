@@ -1,6 +1,5 @@
 // Function Name : App Service
-// Created date :  8/8/24             by :  NgVinh
-// Updated date :                     by :  NgVinh
+
 
 import ApiClientWithToken from "../api";
 

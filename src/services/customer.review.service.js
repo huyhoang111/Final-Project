@@ -1,6 +1,5 @@
 // Function Name : Customer review Service
-// Created date :  13/10/24             by :  VinhLQ
-// Updated date :                      by :  VinhLQ
+
 
 import ApiClientWithToken from "../api";
 import { getParamsHelp } from "../hook/useApp";

@@ -1,6 +1,4 @@
 // Function Name : Booking Page
-// Created date :  6/8/24             by :  VinhLQ
-// Updated date :                     by :  VinhLQ
 
 import React, {
   useEffect,

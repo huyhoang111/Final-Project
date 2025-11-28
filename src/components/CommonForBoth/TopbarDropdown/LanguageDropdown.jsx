@@ -1,6 +1,4 @@
 // Function Name : Language Dropdown
-// Created date :  22/7/24             by :  NgVinh
-// Updated date :                      by :
 
 import React, { useEffect, useState } from "react";
 import {

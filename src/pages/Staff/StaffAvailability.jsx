@@ -1,6 +1,5 @@
 // Function Name : Staff Availability
-// Created date :  31/7/24             by :  NgVinh
-// Updated date :                      by :
+
 import React, { useEffect, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 import * as Yup from "yup";

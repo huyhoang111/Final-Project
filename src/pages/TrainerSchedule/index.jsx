@@ -1,6 +1,5 @@
 // Function Name : TrainerSchedule Page
-// Created date :  5/8/2025           by :  Antoine REY
-// Updated date :                     by :  Antoine REY
+
 
 import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { createRoot } from "react-dom/client";

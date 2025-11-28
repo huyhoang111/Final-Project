@@ -1,6 +1,4 @@
 // Function Name : List Class
-// Created date :  2/8/24             by :  NgVinh
-// Updated date :                     by :  NgVinh
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import PropTypes from "prop-types";

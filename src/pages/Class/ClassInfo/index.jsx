@@ -1,6 +1,4 @@
 // Function Name : Class Info
-// Created date :  2/8/24             by :  NgVinh
-// Updated date :                     by :  NgVinh
 
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";

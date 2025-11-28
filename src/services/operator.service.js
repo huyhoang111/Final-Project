@@ -1,6 +1,5 @@
 // Function Name : Operator Service
-// Created date :  19/7/24             by :  NgVinh
-// Updated date :  20/7/24             by :  NgVinh
+
 import ApiClientWithToken, { formDataClientWithToken } from "../api";
 import { getParamsHelp } from "../hook/useApp";
 
