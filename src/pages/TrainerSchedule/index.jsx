@@ -27,7 +27,7 @@ import { detectBrowser } from "../../utils/app"
 import avatar from "../../assets/icon/circle-user-round.svg";
 
 const TrainerSchedule = (props) => {
-  document.title = "Staff Schedule | Actiwell System";
+  document.title = "Staff Schedule | Final Project";
   const calendarRef = useRef(null);
 
   const getCalendarApi = () => {

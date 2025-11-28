@@ -25,7 +25,7 @@ import moment from "moment";
 import { debounce } from "lodash";
 
 const Notification = (props) => {
-  document.title = "Notification | Actiwell System";
+  document.title = "Notification | Final Project";
 
   const { hasOperator, operator } = useAppSelector((state) => state.operator);
   const [notifications, setNotifications] = useState([]);

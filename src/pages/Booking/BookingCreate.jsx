@@ -6,12 +6,14 @@ import BookingPTDetail from "./BookingPTDetail";
 import BookingDetail from "./BookingDetail";
 
 const CreateBooking = (props) => {
-  document.title = "Create booking | Actiwell System";
+  document.title = "Create booking | Final Project";
 
-  const [currentTabActive, setCurrentTabActive] = useState("0");
+  // Set default to tab "1" (Đặt lịch PT mới) - tab "0" (Đặt lịch mới) is hidden
+  const [currentTabActive, setCurrentTabActive] = useState("1");
 
+  // Filter to only show tab "1" (Đặt lịch PT mới), hide tab "0" (Đặt lịch mới)
   const tabHeaderList = [
-    { name: i18n.t("new_booking"), id: "0" },
+    // { name: i18n.t("new_booking"), id: "0" }, // Hidden tab
     { name: i18n.t("new_private_booking"), id: "1" },
   ];
 
@@ -40,7 +42,8 @@ const CreateBooking = (props) => {
 
           <div className="page-container">
             <TabContent activeTab={currentTabActive}>
-              <TabPane tabId="0">
+              {/* Hidden TabPane "0" (Đặt lịch mới) - component kept but not rendered */}
+              <TabPane tabId="0" style={{ display: "none" }}>
                 <BookingDetail type="create" />
               </TabPane>
 

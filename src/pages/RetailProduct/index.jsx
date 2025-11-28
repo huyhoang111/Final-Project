@@ -22,7 +22,7 @@ const listSection = [
   { name: "option", id: "3" },
 ];
 const RetailProduct = (props) => {
-  document.title = "Retail Product | Actiwell System";
+  document.title = "Retail Product | Final Project";
   const { permissionUser } = useAppSelector((state) => state.auth);
   const [currentTabActive, setCurrentTabActive] = useState("1");
   const handleClick = (section) => {

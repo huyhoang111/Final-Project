@@ -6,14 +6,15 @@ import withRouter from "../../components/Common/withRouter";
 import { TabContent, TabPane } from "reactstrap";
 import StaffSchedule from "./StaffSchedule";
 
+// Hidden tab "staff_schedule" - only showing staff_list
 const tabHeaderList = [
   { name: i18n.t('staff_list'), id: "1" },
-  { name: i18n.t('staff_schedule'), id: "2" },
+  // { name: i18n.t('staff_schedule'), id: "2" }, // Hidden tab
   {}
 ]
 
 const Staff = (props) => {
-  document.title = "Staff | Actiwell System";
+  document.title = "Staff | Final Project";
   const [currentTabActive, setCurrentTabActive] = useState("1");
 
   const handleClick = (section) => {
@@ -47,7 +48,8 @@ const Staff = (props) => {
                 />
               </TabPane>
 
-              <TabPane tabId="2">
+              {/* Hidden TabPane "2" (staff_schedule) - component kept but not rendered */}
+              <TabPane tabId="2" style={{ display: "none" }}>
                 <StaffSchedule />
               </TabPane>
 

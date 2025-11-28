@@ -26,8 +26,9 @@ import dropbox from "../../assets/images/brands/dropbox.png";
 import mail_chimp from "../../assets/images/brands/mail_chimp.png";
 import slack from "../../assets/images/brands/slack.png";
 
-import logo from "../../assets/images/logo.svg";
-import logoLightSvg from "../../assets/images/logo-light.svg";
+// Logo imports removed - using text "Project CMS" instead
+// import logo from "../../assets/images/logo.svg";
+// import logoLightSvg from "../../assets/images/logo-light.svg";
 
 //i18n
 import { withTranslation } from "react-i18next";
@@ -43,8 +44,8 @@ import {
 import { useLocation, matchPath } from "react-router-dom";
 import { authProtectedRoutes } from "../../routes";
 
-// App icon
-import appLogo from "../../assets/icon/logo.png";
+// App icon - removed, using text "Project CMS" instead
+// import appLogo from "../../assets/icon/logo.png";
 
 const Header = (props) => {
   const [search, setsearch] = useState(false);
@@ -117,8 +118,11 @@ const Header = (props) => {
               className="btn btn-sm font-size-16 header-item"
               id="vertical-menu-btn"
             >
-              <img src={appLogo} alt="Logo" style={{ width: "2rem" }} />
+              <i className="fa fa-fw fa-bars" />
             </button>
+            <a href="/" style={{ color: '#0066ff', fontWeight: 700, textDecoration: 'none', marginLeft: '10px' }}>
+              Project CMS
+            </a>
 
             {/* <div className="d-lg-none d-md-block">
               <div className="position-relative">

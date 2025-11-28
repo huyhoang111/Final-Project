@@ -14,7 +14,7 @@ import i18n from "../../i18n";
 import { TabContent, TabPane } from "reactstrap";
 
 const CustomerReview = () => {
-  document.title = "Booking Today | Actiwell System";
+  document.title = "Booking Today | Final Project";
   const [currentTabActive, setCurrentTabActive] = useState("1");
   const listSection = [
     { name: i18n.t("location_overview"), id: "1" },

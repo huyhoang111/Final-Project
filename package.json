@@ -1,5 +1,5 @@
 {
-  "name": "Actiwell-System",
+  "name": "Final-Project",
   "private": true,
   "version": "1.0.0",
   "scripts": {
@@ -90,7 +90,6 @@
     "react-number-format": "5.4.0",
     "react-pdf": "^10.0.1",
     "react-perfect-scrollbar": "^1.5.8",
-    "react-qr-reader": "^3.0.0-beta-1",
     "react-quill": "^2.0.0",
     "react-redux": "9.1.2",
     "react-responsive-carousel": "^3.2.23",

@@ -9,15 +9,13 @@ const Footer = () => {
   return (
     <React.Fragment>
       <footer
-        onClick={(e) => window.open('https://actiwell.co/', '_blank')}
         className="footer"
-        style={{ cursor: 'pointer' }}
       >
         <Container fluid={true}>
           <Row>
             <Col>
               <div className="d-none d-sm-block text-center">
-                Copyright© {new Date().getFullYear()} Actiwell
+                © {new Date().getFullYear()} Final Project
               </div>
             </Col>
           </Row>

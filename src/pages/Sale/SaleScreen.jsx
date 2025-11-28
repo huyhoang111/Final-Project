@@ -5,7 +5,7 @@ import Breadcrumb from "../../components/Common/Breadcrumb";
 import SaleDetail from "./SaleDetail";
 import EContract from "./EContract";
 import Payment from "./Payment";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import saleService from "../../services/sale.service";
 import moment from "moment";
 import operatorService from "../../services/operator.service";
@@ -14,6 +14,7 @@ import EInvoice from "./EInvoice";
 
 const SaleScreen = (props) => {
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
   const titleHead = useMemo(() => {
     switch (props.type) {
       case "create":
@@ -24,16 +25,27 @@ const SaleScreen = (props) => {
         return i18n.t("sales_detail");
     }
   }, [props.type]);
-  const [currentTabActive, setCurrentTabActive] = useState(0);
+  
+  // Check if tab query param exists to auto-switch to payment tab
+  const initialTab = useMemo(() => {
+    const tabParam = searchParams.get('tab');
+    if (tabParam === 'payment') {
+      return 1; // Payment tab
+    }
+    return 0; // Default to detail tab
+  }, [searchParams]);
+  
+  const [currentTabActive, setCurrentTabActive] = useState(initialTab);
   const [dataSale, setDataSale] = useState(null);
   const [location, setLocation] = useState(null);
   const [isRetry, setIsRetry] = useState(false);
 
+  // Hidden tabs: "Tạo hợp đồng" (id: 2) and "Hoá đơn điện tử" (id: 3)
   const listSections = [
     { name: i18n.t("sales_detail"), id: 0 },
     { name: i18n.t("payment"), id: 1 },
-    { name: i18n.t("create_contract"), id: 2 },
-    { name: i18n.t("e_invoice"), id: 3 },
+    // { name: i18n.t("create_contract"), id: 2 }, // Hidden tab
+    // { name: i18n.t("e_invoice"), id: 3 }, // Hidden tab
   ];
 
   const handleGetDetailSale = async (idSale) => {
@@ -89,8 +101,14 @@ const SaleScreen = (props) => {
   useEffect(() => {
     if (dataSale) {
       fetchData();
+      // Auto-switch to payment tab if tab=payment query param exists
+      const tabParam = searchParams.get('tab');
+      if (tabParam === 'payment' && dataSale) {
+        console.log("[DEBUG] SaleScreen: Auto-switching to payment tab");
+        setCurrentTabActive(1);
+      }
     }
-  }, [dataSale])
+  }, [dataSale, searchParams])
 
 
   // Sticky table header
@@ -302,13 +320,15 @@ const SaleScreen = (props) => {
 
               </TabPane>
 
-              <TabPane tabId={2}>
+              {/* Hidden TabPane "Tạo hợp đồng" (tabId: 2) - component kept but not rendered */}
+              <TabPane tabId={2} style={{ display: "none" }}>
                 <EContract
                   dataSale={dataSale}
                 />
               </TabPane>
 
-              <TabPane tabId={3}>
+              {/* Hidden TabPane "Hoá đơn điện tử" (tabId: 3) - component kept but not rendered */}
+              <TabPane tabId={3} style={{ display: "none" }}>
                 <EInvoice
                   isActive={currentTabActive === 3}
                   dataSale={dataSale}

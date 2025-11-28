@@ -101,7 +101,7 @@ const LocationDetail = (props) => {
       validation.values.wifi.filter((item, i) => i !== index)
     );
   };
-  document.title = `${id ? "" : "Create"} Location | Actiwell System`;
+  document.title = `${id ? "" : "Create"} Location | Final Project`;
 
   const validation = useFormik({
     enableReinitialize: true,

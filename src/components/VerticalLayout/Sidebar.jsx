@@ -25,19 +25,27 @@ const Sidebar = (props) => {
         <div className="navbar-brand-box">
           <Link to="/" className="logo logo-dark">
             <span className="logo-sm">
-              <img src={logo} alt="" height="22" />
+              <span style={{ color: '#0066FF', fontWeight: 700, fontSize: '18px' }}>
+                Project CMS
+              </span>
             </span>
             <span className="logo-lg">
-              <img src={logoDark} alt="" height="17" />
+              <span style={{ color: '#0066FF', fontWeight: 700, fontSize: '18px' }}>
+                Project CMS
+              </span>
             </span>
           </Link>
 
           <Link to="/" className="logo logo-light">
             <span className="logo-sm">
-              <img src={logoLightSvg} alt="" height="22" />
+              <span style={{ color: '#0066FF', fontWeight: 700, fontSize: '18px' }}>
+                Project CMS
+              </span>
             </span>
             <span className="logo-lg">
-              <img src={logoLightPng} alt="" height="19" />
+              <span style={{ color: '#0066FF', fontWeight: 700, fontSize: '18px' }}>
+                Project CMS
+              </span>
             </span>
           </Link>
         </div>

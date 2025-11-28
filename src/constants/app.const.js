@@ -264,13 +264,14 @@ export const lIST_SIDEBAR_CONTENT = [
   //   link: "/book-by-pt",
   //   key: "booking:view_list",
   // },
-  {
-    id: 16,
-    name: "staff_schedule",
-    icon: "fa fa-clock",
-    link: "/staff-schedule",
-    key: "staff:view_list",
-  },
+  // Hidden staff_schedule menu item
+  // {
+  //   id: 16,
+  //   name: "staff_schedule",
+  //   icon: "fa fa-clock",
+  //   link: "/staff-schedule",
+  //   key: "staff:view_list",
+  // },
   {
     id: 3,
     name: "class",
@@ -313,13 +314,14 @@ export const lIST_SIDEBAR_CONTENT = [
     link: "/package",
     key: "package:view_list",
   },
-  {
-    id: 9,
-    name: "retail_product",
-    icon: "bxs-shopping-bag-alt",
-    link: "/retail-product",
-    key: ["product_category:view_list", "product:view_list"],
-  },
+  // Hidden menu "Sản phẩm bán lẻ" - UI removed but route kept for compatibility
+  // {
+  //   id: 9,
+  //   name: "retail_product",
+  //   icon: "bxs-shopping-bag-alt",
+  //   link: "/retail-product",
+  //   key: ["product_category:view_list", "product:view_list"],
+  // },
   // {
   //   id: 10,
   //   name: "location",
@@ -334,13 +336,14 @@ export const lIST_SIDEBAR_CONTENT = [
   //   link: "/operator-info",
   //   key: "all",
   // },
-  {
-    id: 12,
-    name: "customer_review",
-    icon: "dripicons-message",
-    link: "/customer-review",
-    key: "review:view_list",
-  },
+  // Hidden menu "Đánh giá" - UI removed but route kept for compatibility
+  // {
+  //   id: 12,
+  //   name: "customer_review",
+  //   icon: "dripicons-message",
+  //   link: "/customer-review",
+  //   key: "review:view_list",
+  // },
   // {
   //   id: 13,
   //   name: "user",
@@ -348,13 +351,14 @@ export const lIST_SIDEBAR_CONTENT = [
   //   link: "/users",
   //   key: "user:view_list",
   // },
-  {
-    id: 14,
-    name: "notification",
-    icon: "dripicons-bell",
-    link: "/notification",
-    key: "all",
-  },
+  // Hidden menu "Thông báo Marketing" - UI removed but route kept for compatibility
+  // {
+  //   id: 14,
+  //   name: "notification",
+  //   icon: "dripicons-bell",
+  //   link: "/notification",
+  //   key: "all",
+  // },
   {
     id: 15,
     name: "settings",
@@ -362,13 +366,14 @@ export const lIST_SIDEBAR_CONTENT = [
     link: "/settings?tab=0",
     key: "all"
   },
-  {
-    id: 16,
-    name: "notice",
-    icon: "dripicons-bell",
-    link: "/notice",
-    key: "all",
-  },
+  // Hidden menu "Thông báo" - UI removed but route kept for compatibility
+  // {
+  //   id: 16,
+  //   name: "notice",
+  //   icon: "dripicons-bell",
+  //   link: "/notice",
+  //   key: "all",
+  // },
 ];
 
 export const ACTIVITY_NEWEST = {

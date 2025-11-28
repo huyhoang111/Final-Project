@@ -24,7 +24,7 @@ import CustomerKanban from "./CustomerKanban";
 import { debounce, isArray } from "lodash";
 
 const Customer = (props) => {
-  document.title = "Customer | Actiwell System";
+  document.title = "Customer | Final Project";
   const { permissionUser } = useAppSelector((state) => state.auth);
   //   const { hasOperator, operator } = useAppSelector((state) => state.operator);
   const [customers, setCustomers] = useState([]);
@@ -394,10 +394,12 @@ const Customer = (props) => {
               >
                 {i18n.t("contact_list")}
               </div>
+              {/* Hidden tab "Liên hệ Kanban" */}
               <div
                 key={2}
                 onClick={() => setCurrentTabActive('contact_kanban')}
                 className={"text-center tab-item " + (currentTabActive === 'contact_kanban' ? "active" : "")}
+                style={{ display: "none" }}
               >
                 {i18n.t("contact_kanban")}
               </div>
@@ -466,20 +468,22 @@ const Customer = (props) => {
                         </div>
                       </button>
                     </Link>
-                    <Button
+                    {/* Removed button "Nhập liệu" (import_customers) */}
+                    {/* <Button
                       color="primary"
                       onClick={() => setIsOpenImport(true)}
                     >
                       <i className="fa fa-file-import" style={{ padding: "0 5px" }}></i>
                       {i18n.t("import_customers")}
-                    </Button>
-                    <div
+                    </Button> */}
+                    {/* Removed button "Đồng bộ dữ liệu Hanet" */}
+                    {/* <div
                       onClick={handleSyncHanetData}
                       className="btn btn-primary btn-block d-flex gap-1">
                       <div className="" style={{ lineHeight: "17px" }}>
                         {i18n.t("sync_hanet_data")}
                       </div>
-                    </div>
+                    </div> */}
                     <Button
                       color="danger"
                       outline
@@ -715,7 +719,8 @@ const Customer = (props) => {
                 />
               </TabPane>
 
-              <TabPane tabId="contact_kanban">
+              {/* Hidden TabPane "Liên hệ Kanban" - component kept but not rendered */}
+              <TabPane tabId="contact_kanban" style={{ display: "none" }}>
                 <CustomerKanban list={customers} isActive={currentTabActive === 'contact_kanban'} fetchData={handleGetListCustomer} />
               </TabPane>
 

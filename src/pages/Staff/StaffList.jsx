@@ -25,7 +25,7 @@ const listStatus = [
 ];
 
 const StaffList = (props) => {
-  document.title = "Staff | Actiwell System";
+  document.title = "Staff | Final Project";
   const path = useLocation();
   const { hasOperator, operator } = useAppSelector((state) => state.operator);
   const { permissionUser } = useAppSelector((state) => state.auth);
@@ -516,7 +516,8 @@ const StaffList = (props) => {
                       </div>
                     </button>
                   </Link>
-                  <div
+                  {/* Hidden button "Nhập lịch làm việc" (import_work_schedule) */}
+                  {/* <div
                     className="btn btn-primary btn-block d-flex gap-1"
                     onClick={() => setIsOpenImport(true)}
                   >
@@ -524,8 +525,9 @@ const StaffList = (props) => {
                     <div style={{ lineHeight: "17px" }}>
                       {i18n.t("import_work_schedule")}
                     </div>
-                  </div>
-                  <div
+                  </div> */}
+                  {/* Hidden button "Xuất dữ liệu chấm công" (export_timekeeping_data) */}
+                  {/* <div
                     className="btn btn-primary btn-block d-flex gap-1"
                     onClick={() => setIsOpenExport(true)}
                   >
@@ -533,7 +535,7 @@ const StaffList = (props) => {
                     <div style={{ lineHeight: "17px" }}>
                       {i18n.t("export_timekeeping_data")}
                     </div>
-                  </div>
+                  </div> */}
                   <Button
                     color="danger"
                     outline={true}

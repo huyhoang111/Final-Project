@@ -397,7 +397,7 @@ const Header = (props) => {
             >
               <i className="fa fa-fw fa-bars" />
             </button>
-            <div className="d-lg-none d-md-block">
+            {/* <div className="d-lg-none d-md-block">
               <div className="position-relative">
                 <Link to="/" className="">
                   <h3>ACTIWELL</h3>
@@ -411,7 +411,7 @@ const Header = (props) => {
                   <h3>ACTIWELL</h3>
                 </Link>
               </div>
-            </form>
+            </form> */}
           </div>
           <div className="d-flex flex-row">
             <LanguageDropdown />

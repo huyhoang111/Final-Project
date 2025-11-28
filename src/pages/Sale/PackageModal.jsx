@@ -8,6 +8,7 @@ import MyCommission from "../../components/Common/MyCommission";
 import moment from "moment/moment";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useEffect } from "react";
 
 import { KIND_DISCOUNT, listKindPackage } from "../../constants/app.const";
 
@@ -198,6 +199,13 @@ const PackageModal = ({
     });
   };
 
+  // Debug: Log data when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      console.log("[DEBUG] PackageModal opened: data.packages =", data.packages, "data.listPackage =", data.listPackage);
+    }
+  }, [isOpen, data.packages, data.listPackage]);
+
   const onClose = () => {
     if (!modifying) {
       deleteItem(packageIndex, "packages");
@@ -255,7 +263,7 @@ const PackageModal = ({
                 id={'package_id'}
                 name={'package_id'}
                 placeholder={i18n.t("package")}
-                options={data.packages}
+                options={data.packages || []}
                 selected={packageValidation.values.package_id}
                 onSearch={handleSearchPackage}
                 disabled={!isEdit}

@@ -82,7 +82,7 @@ const SaleDetail = (props) => {
     return permissionUser.includes("sale_order:update_info");
   }, [permissionUser]);
 
-  document.title = "Sale | Actiwell System";
+  document.title = "Sale | Final Project";
 
   const validation = useFormik({
     enableReinitialize: true,
@@ -339,26 +339,55 @@ const SaleDetail = (props) => {
   };
 
   const handleSubmitForm = async (values) => {
+    console.log("[DEBUG] handleSubmitForm called with values:", values);
+    console.log("[DEBUG] handleSubmitForm - location_id:", values.location_id, "customer_id:", values.customer_id);
+    console.log("[DEBUG] handleSubmitForm - packages.length:", values.packages?.length, "products.length:", values.products?.length);
+    console.log("[DEBUG] handleSubmitForm - isNext:", isNext, "toPayment:", toPayment);
+    
     try {
       if (
         validation.values.products?.length +
         validation.values.packages?.length ==
         0
       ) {
-        setErrorValidate("Please add at least 1 package or product");
+        const errorMsg = "Please add at least 1 package or product";
+        setErrorValidate(errorMsg);
+        toast.error(errorMsg, {
+          position: "top-right",
+          autoClose: 5000,
+          theme: "light",
+          hideProgressBar: true,
+        });
+        console.warn("[DEBUG] handleSubmitForm blocked: no packages or products");
         return;
       }
+      
+      console.log("[DEBUG] handleSubmitForm - creating formData");
       const formData =
         props.type === "create"
           ? createSaleDetail(values)
           : updateSaleDetail(values);
+      
+      // Log formData contents (excluding files)
+      console.log("[DEBUG] handleSubmitForm - formData keys:", Array.from(formData.keys()));
+      for (const [key, value] of formData.entries()) {
+        if (value instanceof File) {
+          console.log(`[DEBUG] formData[${key}] = [File]`);
+        } else {
+          console.log(`[DEBUG] formData[${key}] =`, value);
+        }
+      }
 
+      console.log("[DEBUG] handleSubmitForm - calling API, type:", props.type);
       const response =
         props.type === "create"
           ? await saleService.createSale(formData)
           : await saleService.updateSale(formData, id);
+      
+      console.log("[DEBUG] handleSubmitForm - API response:", response);
 
       if (response.success) {
+        console.log("[DEBUG] handleSubmitForm - API success");
         if (props.type === "create") {
           props.onData(response.data);
         }
@@ -374,17 +403,38 @@ const SaleDetail = (props) => {
           }
         );
         if (props.type === "create") {
-          props.router.navigate(`/sale/detail/${response.data.id}`);
+          if (isNext) {
+            // If "Thanh toán" button was clicked, navigate to detail page with payment tab
+            console.log("[DEBUG] handleSubmitForm - isNext=true, navigating to detail page with payment tab");
+            props.router.navigate(`/sale/detail/${response.data.id}?tab=payment`);
+          } else {
+            // If "Lưu" button was clicked, just navigate to detail page
+            console.log("[DEBUG] handleSubmitForm - isNext=false, navigating to detail page");
+            props.router.navigate(`/sale/detail/${response.data.id}`);
+          }
+        } else {
+          // Update mode - can call onNext to switch tab
+          if (isNext && props.onNext) {
+            console.log("[DEBUG] handleSubmitForm - update mode, calling onNext to switch to payment tab");
+            props.onNext();
+          }
         }
-        if (isNext) {
-          props.onNext();
-        }
-        if (toPayment) {
+        if (toPayment && props.toPayment) {
+          console.log("[DEBUG] handleSubmitForm - calling toPayment");
           props.toPayment();
         }
+      } else {
+        console.warn("[DEBUG] handleSubmitForm - API response.success is false:", response);
+        toast.error(response.message || "Có lỗi xảy ra khi lưu đơn hàng", {
+          position: "top-right",
+          autoClose: 5000,
+          theme: "light",
+          hideProgressBar: true,
+        });
       }
     } catch (e) {
-      console.log("eeerr", e);
+      console.error("[DEBUG] handleSubmitForm - API error:", e);
+      console.error("[DEBUG] handleSubmitForm - error details:", e.response?.data || e.message || e);
       if (e.message == "previously_purchased_package") {
         toast.error("Previously purchased package", {
           position: "top-right",
@@ -564,16 +614,24 @@ const SaleDetail = (props) => {
         location: payload?.locationId ?? validation.values.location_id,
         keyword: payload?.keyword ?? "",
       };
+      console.log("[DEBUG] handleGetSalespersonForOperator: calling API with params:", params);
       const response = await staffService.getListTrainerForOperator(params);
+      console.log("[DEBUG] handleGetSalespersonForOperator: API response:", response);
       if (response.success) {
-        return response.data.map((item) => {
+        const result = response.data.map((item) => {
           return {
             value: item.id,
             label: `${item.last_name} ${item.first_name}`,
           };
         });
+        console.log("[DEBUG] handleGetSalespersonForOperator: formatted result:", result);
+        return result;
+      } else {
+        console.warn("[DEBUG] handleGetSalespersonForOperator: API response.success is false");
       }
-    } catch (e) { }
+    } catch (e) {
+      console.error("[DEBUG] handleGetSalespersonForOperator: API error:", e);
+    }
   };
 
   const handleGetPackageForOperator = async (payload = {}) => {
@@ -582,9 +640,11 @@ const SaleDetail = (props) => {
         location: payload?.locationId ?? validation.values.location_id,
         keyword: payload?.keyword ?? "",
       };
+      console.log("[DEBUG] handleGetPackageForOperator: calling API with params:", params);
       const response = await packageService.getListPackageForOperator(params);
+      console.log("[DEBUG] handleGetPackageForOperator: API response:", response);
       if (response.success) {
-        return {
+        const result = {
           data: response.data,
           dropdown: response.data.map((item) => {
             return {
@@ -593,8 +653,14 @@ const SaleDetail = (props) => {
             };
           }),
         };
+        console.log("[DEBUG] handleGetPackageForOperator: formatted result:", result);
+        return result;
+      } else {
+        console.warn("[DEBUG] handleGetPackageForOperator: API response.success is false");
       }
-    } catch (e) { }
+    } catch (e) {
+      console.error("[DEBUG] handleGetPackageForOperator: API error:", e);
+    }
   };
 
   const handleGetProductForOperator = async (payload = {}) => {
@@ -646,25 +712,45 @@ const SaleDetail = (props) => {
   });
 
   const handleSearchSalesperson = debounce(async (e) => {
-    if (!validation.values.location_id) return;
+    if (!validation.values.location_id) {
+      console.warn("[DEBUG] handleSearchSalesperson: location_id is missing");
+      return;
+    }
+    console.log("[DEBUG] handleSearchSalesperson: calling API with keyword:", e, "location_id:", validation.values.location_id);
     const data = await handleGetSalespersonForOperator({ keyword: e });
+    console.log("[DEBUG] handleSearchSalesperson: API response:", data);
     if (data) {
-      setData((prev) => ({
-        ...prev,
-        salespersons: data,
-      }));
+      setData((prev) => {
+        console.log("[DEBUG] handleSearchSalesperson: setting data.salespersons:", data);
+        return {
+          ...prev,
+          salespersons: data,
+        };
+      });
+    } else {
+      console.warn("[DEBUG] handleSearchSalesperson: API returned no data");
     }
   }, 300);
 
   const handleSearchPackage = debounce(async (e) => {
-    if (!validation.values.location_id) return;
+    if (!validation.values.location_id) {
+      console.warn("[DEBUG] handleSearchPackage: location_id is missing");
+      return;
+    }
+    console.log("[DEBUG] handleSearchPackage: calling API with keyword:", e, "location_id:", validation.values.location_id);
     const res = await handleGetPackageForOperator({ keyword: e });
+    console.log("[DEBUG] handleSearchPackage: API response:", res);
     if (res) {
-      setData((prev) => ({
-        ...prev,
-        packages: res.dropdown,
-        listPackage: res.data,
-      }));
+      setData((prev) => {
+        console.log("[DEBUG] handleSearchPackage: setting data.packages:", res.dropdown, "listPackage:", res.data);
+        return {
+          ...prev,
+          packages: res.dropdown,
+          listPackage: res.data,
+        };
+      });
+    } else {
+      console.warn("[DEBUG] handleSearchPackage: API returned no data");
     }
   }, 300);
 
@@ -819,6 +905,7 @@ const SaleDetail = (props) => {
   };
 
   const handleSelectLocation = async (locationId) => {
+    console.log("[DEBUG] handleSelectLocation: locationId =", locationId);
     validation.setFieldValue("location_id", locationId);
     const [salespersons, packages, products] = await Promise.all([
       handleGetSalespersonForOperator({ locationId: locationId }),
@@ -826,14 +913,19 @@ const SaleDetail = (props) => {
       handleGetProductForOperator({ locationId: locationId }),
     ]);
 
-    setData((prev) => ({
-      ...prev,
-      salespersons: salespersons,
-      listPackage: packages.data,
-      packages: packages.dropdown,
-      listProduct: products.data,
-      products: products.dropdown,
-    }));
+    console.log("[DEBUG] handleSelectLocation: fetched data - salespersons:", salespersons, "packages:", packages, "products:", products);
+    setData((prev) => {
+      const newData = {
+        ...prev,
+        salespersons: salespersons || [],
+        listPackage: packages?.data || [],
+        packages: packages?.dropdown || [],
+        listProduct: products?.data || [],
+        products: products?.dropdown || [],
+      };
+      console.log("[DEBUG] handleSelectLocation: setting data:", newData);
+      return newData;
+    });
   };
 
   const setTouchedFields = () => {
@@ -965,7 +1057,23 @@ const SaleDetail = (props) => {
       setNewCustomer();
       setNewCustomerSuccess(false);
     }
-  }, [data.customers])
+  }, [data.customers]);
+
+  // Fetch packages data when PackageModal opens and location_id is available
+  useEffect(() => {
+    if (isShowPackageModal && validation.values.location_id && (!data.packages || data.packages.length === 0)) {
+      console.log("[DEBUG] useEffect: Fetching packages on modal open, location_id:", validation.values.location_id);
+      handleSearchPackage("");
+    }
+  }, [isShowPackageModal, validation.values.location_id]);
+
+  // Fetch salespersons data when adding sale person and location_id is available
+  useEffect(() => {
+    if (validation.values.sale_persons.length > 0 && validation.values.location_id && (!data.salespersons || data.salespersons.length === 0)) {
+      console.log("[DEBUG] useEffect: Fetching salespersons, location_id:", validation.values.location_id);
+      handleSearchSalesperson("");
+    }
+  }, [validation.values.sale_persons.length, validation.values.location_id]);
 
   useEffect(() => {
     // Synchronise commission_amount <-> commission_percent for each sale_person
@@ -996,11 +1104,90 @@ const SaleDetail = (props) => {
       <Form
         onSubmit={async (e) => {
           e.preventDefault();
+          console.log("[DEBUG] Form onSubmit triggered");
 
           setTouchedFields();
           await validation.validateForm();
+          console.log("[DEBUG] Form validation - isValid:", validation.isValid, "errors:", validation.errors);
+          
+          // Check required fields before validation
+          if (!validation.values.location_id) {
+            toast.error(i18n.t("please_select_location") || "Vui lòng chọn địa điểm", {
+              position: "top-right",
+              autoClose: 5000,
+              theme: "light",
+              hideProgressBar: true,
+            });
+            console.warn("[DEBUG] Form submit blocked: location_id is missing");
+            return false;
+          }
+          
+          if (!validation.values.customer_id) {
+            toast.error(i18n.t("please_select_customer") || "Vui lòng chọn khách hàng", {
+              position: "top-right",
+              autoClose: 5000,
+              theme: "light",
+              hideProgressBar: true,
+            });
+            console.warn("[DEBUG] Form submit blocked: customer_id is missing");
+            return false;
+          }
+          
+          if (validation.values.packages?.length === 0 && validation.values.products?.length === 0) {
+            toast.error(i18n.t("please_add_package_or_product") || "Vui lòng thêm ít nhất 1 gói tập hoặc sản phẩm", {
+              position: "top-right",
+              autoClose: 5000,
+              theme: "light",
+              hideProgressBar: true,
+            });
+            console.warn("[DEBUG] Form submit blocked: no packages or products");
+            return false;
+          }
+          
           if (validation.isValid) {
+            console.log("[DEBUG] Form is valid, calling handleSubmit");
             validation.handleSubmit();
+          } else {
+            console.warn("[DEBUG] Form validation failed:", validation.errors);
+            // Display validation errors - check nested errors
+            const getFirstError = (errors) => {
+              for (const key in errors) {
+                if (Array.isArray(errors[key])) {
+                  // Check array items
+                  for (let i = 0; i < errors[key].length; i++) {
+                    if (errors[key][i] && typeof errors[key][i] === 'object') {
+                      const nestedError = getFirstError(errors[key][i]);
+                      if (nestedError) return nestedError;
+                    } else if (errors[key][i]) {
+                      return errors[key][i];
+                    }
+                  }
+                } else if (typeof errors[key] === 'object' && errors[key] !== null) {
+                  const nestedError = getFirstError(errors[key]);
+                  if (nestedError) return nestedError;
+                } else if (errors[key]) {
+                  return errors[key];
+                }
+              }
+              return null;
+            };
+            
+            const firstError = getFirstError(validation.errors);
+            if (firstError) {
+              toast.error(firstError || "Vui lòng kiểm tra lại thông tin", {
+                position: "top-right",
+                autoClose: 5000,
+                theme: "light",
+                hideProgressBar: true,
+              });
+            } else {
+              toast.error("Vui lòng kiểm tra lại thông tin", {
+                position: "top-right",
+                autoClose: 5000,
+                theme: "light",
+                hideProgressBar: true,
+              });
+            }
           }
           return false;
         }}
@@ -1151,7 +1338,8 @@ const SaleDetail = (props) => {
                       handleGetDetailSale={handleGetDetailSale}
                     />
                   )}
-                  <Button
+                  {/* Removed "Thêm sản phẩm" button - only keeping "Thêm gói tập" */}
+                  {/* <Button
                     color="primary"
                     outline
                     onClick={() => {
@@ -1165,7 +1353,8 @@ const SaleDetail = (props) => {
                   >
                     <IcPlus color="currentColor" />
                     {i18n.t("add_product")}
-                  </Button>
+                  </Button> */}
+                  {/* ProductModal kept for logic but not accessible via button */}
                   {isShowProductModal && (
                     <ProductModal
                       key={JSON.stringify(validation.values.products[selectedProductIndex])}
@@ -1313,7 +1502,7 @@ const SaleDetail = (props) => {
                             selected={
                               validation.values.sale_persons[index].staff_id
                             }
-                            onSearch={handleSearchPackage}
+                            onSearch={handleSearchSalesperson}
                             disabled={!isEdit}
                             setSelected={(e) => handleSelectSalePercent(e, index)}
                             invalid={
@@ -1512,6 +1701,11 @@ const SaleDetail = (props) => {
                       <Button
                         color="primary"
                         type="submit"
+                        onClick={() => {
+                          console.log("[DEBUG] Save button clicked");
+                          setIsNext(false);
+                          setToPayment(false);
+                        }}
                       >
                         {i18n.t("save")}
                       </Button>
@@ -1519,7 +1713,9 @@ const SaleDetail = (props) => {
                         color="primary"
                         type="submit"
                         onClick={() => {
+                          console.log("[DEBUG] Payment button clicked");
                           setIsNext(true);
+                          setToPayment(false);
                         }}
                       >
                         {i18n.t("go_to_payment")}

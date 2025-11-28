@@ -36,7 +36,7 @@ const StaffActivities = (props) => {
 
   const exportToExcel = async () => {
     const workbook = new ExcelJS.Workbook();
-    workbook.creator = "Actiwell";
+    workbook.creator = "Final Project";
     workbook.created = new Date();
 
     // =============================
@@ -165,14 +165,15 @@ const StaffActivities = (props) => {
 
   return (
     <>
-      <Button
+      {/* Hidden button "Xuất Excel" in tab "Hoạt động của nhân viên" */}
+      {/* <Button
         className="secondary mb-4"
         outline
         onClick={() => { exportToExcel() }}
         style={{ width: 'fit-content' }}
       >
         {i18n.t("export_excel")}
-      </Button>
+      </Button> */}
       <StaffSaleOrder
         staffId={props.staff?.id}
         isActive={props.activeTab}

@@ -35,7 +35,7 @@ import i18n from "../../i18n";
 
 const ForgetPasswordPage = (props) => {
   //meta title
-  document.title = "Forgot Password | Actiwell System";
+  document.title = "Forgot Password | Final Project";
 
   const [forgetSuccessMsg, setForgetSuccessMsg] = useState(false);
   const [forgetError, setForgetError] = useState("");
@@ -102,7 +102,7 @@ const ForgetPasswordPage = (props) => {
                   <Row>
                     <Col>
                       <div className="text-center text-primary p-4">
-                        <h3 className="text-primary">ACTIWELL SYSTEM</h3>
+                        <h3 className="text-primary">Final Project</h3>
                       </div>
                     </Col>
                   </Row>

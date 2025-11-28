@@ -29,7 +29,7 @@ const listStatus = [
 ];
 
 const Package = (props) => {
-  document.title = "Package | Actiwell System";
+  document.title = "Package | Final Project";
   const { hasOperator, operator } = useAppSelector((state) => state.operator);
   const [packages, setPackages] = useState([]);
   const { permissionUser } = useAppSelector((state) => state.auth);

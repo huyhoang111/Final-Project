@@ -68,7 +68,7 @@ const BookingPTDetail = (props) => {
     listPackage: [],
     packages: [],
   });
-  document.title = "Booking | Actiwell System";
+  document.title = "Booking | Final Project";
   const { permissionUser } = useAppSelector((state) => state.auth);
   const canCheckin = useMemo(() => {
     return permissionUser.includes("booking:checkin");

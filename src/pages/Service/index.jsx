@@ -28,7 +28,7 @@ const listStatus = [
 ];
 
 const Service = (props) => {
-  document.title = "Service | Actiwell System";
+  document.title = "Service | Final Project";
   const path = useLocation();
   const { hasOperator, operator } = useAppSelector((state) => state.operator);
   const { permissionUser } = useAppSelector((state) => state.auth);

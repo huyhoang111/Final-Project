@@ -94,18 +94,8 @@ const CardSummarySection = ({
     },
   ], [showInClass]);
 
-  const getValueWithPrevious = (current, previous) => {
-    if (!previous) {
-      return " ";
-    } else {
-      const percentageChange = ((current - previous) / previous) * 100;
-      // Format percentage change
-      const change = `${percentageChange.toFixed(0)}% ${month ? i18n.t('from_previous_month') : i18n.t('from_previous_year')}`
-      return percentageChange < 0
-        ? { isNegative: true, indVal: `${change}` }
-        : { isNegative: false, indVal: `+${change}` };
-    }
-  };
+  // Removed getValueWithPrevious function - no longer calculating trend/percentage changes
+  // Only keeping main values for 4 KPIs
 
   const listCardSummary = useMemo(() => {
     return cardConfig.map((card) => {
@@ -113,7 +103,8 @@ const CardSummarySection = ({
       const key = card.key;
 
       const current = card.getCurrent(data, isDynamic ? memberType : undefined, showInClass) ?? 0;
-      const previous = card.getPrevious(data, isDynamic ? memberType : undefined, showInClass) ?? 0;
+      // Removed previous value calculation - no longer needed for trend display
+      // const previous = card.getPrevious(data, isDynamic ? memberType : undefined, showInClass) ?? 0;
 
       if (current === undefined) return null;
 
@@ -126,17 +117,17 @@ const CardSummarySection = ({
           ? `${formatNumberAsCurrency(current)} VND`
           : formatNumberAsCurrency(current);
 
-      const { isNegative, indVal } = getValueWithPrevious(current, previous)
+      // Removed trend calculation - only keeping main value
+      // const { isNegative, indVal } = getValueWithPrevious(current, previous)
 
       return {
         key,
         title,
         mainValue,
-        indicationValue: indVal,
-        isNegative: isNegative,
+        // Removed indicationValue and isNegative - no trend display
       };
     }).filter(Boolean); // Clean null cards
-  }, [data, memberType, month, showInClass]);
+  }, [data, memberType, showInClass]);
 
   const getListStatisticData = async () => {
     let payload = {
@@ -179,29 +170,21 @@ const CardSummarySection = ({
             <h5 className="dashboard-card-summary-title">
               {item.title}
             </h5>
-            {/* Button only displayed for 'member' card */}
-            {item.key === "member" && (
+            {/* Hidden button "Đang diễn ra" - UI removed */}
+            {/* {item.key === "member" && (
               <button
                 onClick={() => setShowInClass((prev) => !prev)}
                 className={`btn btn-in-class-toggle ${showInClass ? "active" : ""}`}
               >
                 {i18n.t("in_class")}
               </button>
-            )}
+            )} */}
           </div>
           <div className="dashboard-card-summary-body">
             <p className="dashboard-card-summary-main-figure">
               {item.mainValue}
             </p>
-            {!(showInClass && item.key === "member") && (
-              <p
-                className={
-                  "dashboard-card-summary-indication " + (item.isNegative ? "negative" : "")
-                }
-              >
-                {item.indicationValue}
-              </p>
-            )}
+            {/* Removed trend/percentage indication - only showing main value */}
           </div>
         </div>
       ))}

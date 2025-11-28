@@ -190,19 +190,19 @@ import StaffDetail from "../pages/Staff/StaffDetail";
 import Package from "../pages/Package";
 import ClassInfo from "../pages/Class/ClassInfo";
 import ClassDetail from "../pages/Class/ClassInfo/ClassDetail";
-import RetailProduct from "../pages/RetailProduct";
+// import RetailProduct from "../pages/RetailProduct"; // Hidden - route now renders placeholder
 import Sale from "../pages/Sale";
 import SaleScreen from "../pages/Sale/SaleScreen";
 import Booking from "../pages/Booking";
 import BookingDetail from "../pages/Booking/BookingDetail";
 import BookingToday from "../pages/Booking/BookingToday";
 import CustomerTab from "../pages/Customer/CustomerTab";
-import CustomerReview from "../pages/CustomerReview/index";
+// import CustomerReview from "../pages/CustomerReview/index"; // Hidden - route now renders placeholder
 import Users from "../pages/Users";
 import UserDetail from "../pages/Users/UserDetail";
 import RegisterAdmin from "../pages/Authentication/RegisterAdmin";
-import NotificationDetail from "../pages/Notification/NotificationDetail";
-import Notification from "../pages/Notification";
+// import NotificationDetail from "../pages/Notification/NotificationDetail"; // Hidden - routes now render placeholder
+// import Notification from "../pages/Notification"; // Hidden - route now renders placeholder
 import BookingPTDetail from "../pages/Booking/BookingPTDetail";
 import BookingPTList from "../pages/Booking/BookingPTList";
 import MarketSegments from "../pages/MarketSegment/index";
@@ -211,7 +211,7 @@ import Settings from "../pages/Settings";
 import TrainerSchedule from "../pages/TrainerSchedule";
 import BookingCreate from "../pages/Booking/BookingCreate";
 import PolicyDetail from "../pages/Policy/PolicyDetail";
-import Notice from "../pages/Notice";
+// import Notice from "../pages/Notice"; // Hidden - route now renders placeholder
 
 // import UiProgressbar from "../../src/pages/Ui/UiProgressbar"
 
@@ -394,13 +394,13 @@ const authProtectedRoutes = [
   },
   {
     path: "/retail-product",
-    component: <RetailProduct />,
+    component: <div></div>, // Hidden Retail Product page - route kept for compatibility, service still available for Sale module
     permission: "all",
     title: i18n.t("retail_product"),
   },
   {
     path: "/customer-review",
-    component: <CustomerReview />,
+    component: <div></div>, // Hidden Customer Review page - route kept for compatibility, service still available
     permission: "review:view_list",
     title: i18n.t("customer_review"),
   },
@@ -426,21 +426,21 @@ const authProtectedRoutes = [
   },
   {
     path: "/notification",
-    component: <Notification />,
+    component: <div></div>, // Hidden Notification Marketing page - route kept for compatibility, service still available for Notice module
     permission: "all",
     title: i18n.t("notification"),
     subtitle: i18n.t("notification_list"),
   },
   {
     path: "/notification/create",
-    component: <NotificationDetail type="create" />,
+    component: <div></div>, // Hidden Notification Marketing create page
     permission: "all",
     title: i18n.t("notification"),
     subtitle: i18n.t("add_new_notification"),
   },
   {
     path: "/notification/:id",
-    component: <NotificationDetail type="detail" />,
+    component: <div></div>, // Hidden Notification Marketing detail page
     permission: "all",
     title: i18n.t("notification"),
     subtitle: i18n.t("notification_detail"),
@@ -466,7 +466,7 @@ const authProtectedRoutes = [
   },
   {
     path: "/staff-schedule",
-    component: <TrainerSchedule />,
+    component: <div></div>, // Disabled Staff Schedule page - render empty component
     permission: "staff:view_list",
     title: i18n.t("staff_schedule"),
   },
@@ -486,7 +486,7 @@ const authProtectedRoutes = [
   },
   {
     path: "/notice",
-    component: <Notice />,
+    component: <div></div>, // Hidden Notice page - route kept for compatibility, API still available for mobile app/backend
     permission: "all",
     title: i18n.t("notice"),
   },

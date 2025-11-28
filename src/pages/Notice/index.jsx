@@ -16,7 +16,7 @@ const listSection = [
   { name: "readed_notice", id: "2" },
 ];
 const Notice = (props) => {
-  document.title = "Notice | Actiwell System";
+  document.title = "Notice | Final Project";
   const { permissionUser } = useAppSelector((state) => state.auth);
   const [currentTabActive, setCurrentTabActive] = useState("1");
   const [refreshListReaded, setRefreshListReaded] = useState(0);

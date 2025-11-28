@@ -60,7 +60,7 @@ const selectBookingType = [
 ];
 
 const Booking = (props) => {
-  document.title = "Booking | Actiwell System";
+  document.title = "Booking | Final Project";
   const calendarRef = useRef(null);
 
   const getCalendarApi = () => {
@@ -575,12 +575,13 @@ const Booking = (props) => {
         }
       },
     },
-    QrScanner: {
-      text: "",
-      click: () => {
-        openCamera();
-      },
-    },
+    // Removed QrScanner button from header toolbar
+    // QrScanner: {
+    //   text: "",
+    //   click: () => {
+    //     openCamera();
+    //   },
+    // },
     AddNewBooking: {
       text: i18n.t(""),
       click: () => {},
@@ -632,35 +633,37 @@ const Booking = (props) => {
 
   const reactRootRefQr = useRef(null);
 
-  useEffect(() => {
-    const toolbarEl = document.querySelector(".fc-QrScanner-button");
+  // Commented out - QR Scanner button removed from header toolbar
+  // useEffect(() => {
+  //   const toolbarEl = document.querySelector(".fc-QrScanner-button");
 
-    if (toolbarEl) {
-      toolbarEl.classList.remove("btn-primary");
-      toolbarEl.classList.add("btn-outline");
+  //   if (toolbarEl) {
+  //     toolbarEl.classList.remove("btn-primary");
+  //     toolbarEl.classList.add("btn-outline");
 
-      if (!toolbarEl.querySelector("#qr-scanner-button")) {
-        const placeholder = document.createElement("div");
-        placeholder.id = "qr-scanner-button";
-        toolbarEl.innerHTML = "";
-        toolbarEl.appendChild(placeholder);
+  //     if (!toolbarEl.querySelector("#qr-scanner-button")) {
+  //       const placeholder = document.createElement("div");
+  //       placeholder.id = "qr-scanner-button";
+  //       toolbarEl.innerHTML = "";
+  //       toolbarEl.appendChild(placeholder);
 
-        // React 18+ rendering
-        reactRootRefQr.current = createRoot(placeholder);
-        reactRootRefQr.current.render(
-          <div className="d-flex align-items-center gap-2">
-            <IcQR color="#2563EB" />
-            <div className="" style={{ lineHeight: "17px" }}>
-              Check in
-            </div>
-          </div>
-        );
-      }
-    }
-  }, []);
+  //       // React 18+ rendering
+  //       reactRootRefQr.current = createRoot(placeholder);
+  //       reactRootRefQr.current.render(
+  //         <div className="d-flex align-items-center gap-2">
+  //           <IcQR color="#2563EB" />
+  //           <div className="" style={{ lineHeight: "17px" }}>
+  //             Check in
+  //           </div>
+  //         </div>
+  //       );
+  //     }
+  //   }
+  // }, []);
 
   const reactRootRefAdd = useRef(null);
 
+  // Restored AddNewBooking button in header toolbar
   useEffect(() => {
     const toolbarEl = document.querySelector(".fc-AddNewBooking-button");
 
@@ -1004,10 +1007,11 @@ const Booking = (props) => {
                 </div>
                 {window.innerWidth >= "800" && (
                   <>
+                    {/* Hidden checkboxes: Đặt lịch theo nhóm và Đặt lịch PT */}
                     <div
                       className=""
                       style={{
-                        display: "flex",
+                        display: "none", // Hidden as per requirement
                         width: "auto",
                         marginRight: "0.5rem",
                         alignItems: "right",
@@ -1067,7 +1071,8 @@ const Booking = (props) => {
               </div>
               <Collapse isOpen={filterOpen} className="filter-grid">
                 {window.innerWidth < "800" && (
-                  <div className="filter-group">
+                  <div className="filter-group" style={{ display: "none" }}>
+                    {/* Hidden checkboxes: Đặt lịch theo nhóm và Đặt lịch PT */}
                     <label htmlFor="booking-type">
                       {i18n.t("booking_type")}
                     </label>
@@ -1253,7 +1258,7 @@ const Booking = (props) => {
                 headerToolbar={{
                   start: "prevOfData,title,nextOfData todayOfData",
                   center: "monthOfData weekOfData dayOfData listOfData",
-                  end: "AddNewBooking QrScanner",
+                  end: "AddNewBooking", // Keep AddNewBooking button, removed QrScanner
                 }}
                 dateClick={(e) => handleDateClick(e)}
                 views={{
@@ -1581,33 +1586,7 @@ const Booking = (props) => {
                             String(created_date.getSeconds()).padStart(2, "0")}
                       </div>
                       <div style={{ width: "8.2%", justifyContent: "left" }}>
-                        <div
-                          className="over-flow-hidden table"
-                          style={{
-                            display:
-                              bookingItem?.status === 0 &&
-                              bookingItem?.check_in === 1
-                                ? "flex"
-                                : "none",
-                            margin: 0,
-                            justifyContent: "left",
-                          }}
-                        >
-                          <Button
-                            color="success"
-                            className="my-1"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              if (bookingItem.class) {
-                                handleCheckInBooking(bookingItem.id);
-                              } else {
-                                handleCheckInPtBooking(bookingItem.id);
-                              }
-                            }}
-                          >
-                            {i18n.t("check_in")}
-                          </Button>
-                        </div>
+                        {/* Removed Check in button - button "Thêm mới" is now in header toolbar */}
                       </div>
                     </div>
                   );

@@ -114,14 +114,15 @@ const StaffPerformance = (props) => {
           setSelected={(e) => setSelectedMonth(e)}
           placeholder={i18n.t("months")}
         />
-        <Button
+        {/* Hidden button "Xuất Excel" in tab "Hiệu suất của nhân viên" */}
+        {/* <Button
           className="secondary"
           outline
           onClick={() => setIsOpenExport(true)}
           style={{ width: 'fit-content' }}
         >
           {i18n.t("export_excel")}
-        </Button>
+        </Button> */}
       </div>
       <StaffPolicies
         ref={staffPoliciesRef}
